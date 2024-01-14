@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pydantic
+passlib[bcrypt]
+mysql-connector-python
+python-jose[cryptography]
+
+# Optional for testing
+pytest
+requests
+
+# Optional for documentation
+uvicorn[docs]
