@@ -76,7 +76,8 @@ def login_user(login: Login):
         jwt_token = ""
         if user.check_password(login.password):
             jwt_token = jwt.generate_jwt(user)
-
+        else:
+            return {"status": 500, "message": "Invalid Username Or Password"}
     except Exception as e:
         return {"status": 500, "message": e}
     else:
