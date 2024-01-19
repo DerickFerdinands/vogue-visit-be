@@ -1,0 +1,9 @@
+venv/, .venv/
+*.tmp, *.bak
+*.log
+dist/, build/
+*.swp, .DS_Store
+.env
+*.sqlite3, *.sql
+docs/
+*.key, *.pem, *.p12

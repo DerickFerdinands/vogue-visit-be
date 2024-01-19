@@ -11,3 +11,8 @@ requests
 
 # Optional for documentation
 uvicorn[docs]
+
+SQLAlchemy
+mysqlclient
+pymysql
+pyjwt

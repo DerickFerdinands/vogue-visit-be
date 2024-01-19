@@ -4,13 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c22077fe-add7-4ebb-840a-316310358ae0" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/database/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/routers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="c22077fe-add7-4ebb-840a-316310358ae0" name="Changes" comment="Initial Folder Structure">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/config/jwt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/user_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/database/db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/mappers/user_mapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/user_dto.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/service/user_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/appointment.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/appointment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/salon.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/salon.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_main.http" beforeDir="false" afterPath="$PROJECT_DIR$/test_main.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +39,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2avdMuWFdHLPDqbDApwMaNmQ0EV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -40,26 +50,39 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "FastAPI.vogue_visit_be.executor": "Run",
     "HTTP Request.test_main | #1.executor": "Run",
+    "HTTP Request.test_main | #3.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/ML/Vogue Visit/vogue_visit_be/app",
+    "last_opened_file_path": "D:/ML/Vogue Visit/vogue_visit_be/app/models",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ML\Vogue Visit\vogue_visit_be\app\models" />
+      <recent name="D:\ML\Vogue Visit\vogue_visit_be\app\entity" />
       <recent name="D:\ML\Vogue Visit\vogue_visit_be\app" />
     </key>
   </component>
   <component name="RunManager" selected="FastAPI.vogue_visit_be">
     <configuration name="test_main | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test_main | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" index="3" requestIdentifier="#3" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="vogue_visit_be" type="Python.FastAPI">
@@ -79,6 +102,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.test_main | #3" />
         <item itemvalue="HTTP Request.test_main | #1" />
       </list>
     </recent_temporary>
@@ -98,7 +122,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1705202943095</updated>
-      <workItem from="1705202945123" duration="739000" />
+      <workItem from="1705202945123" duration="3038000" />
+      <workItem from="1705293866505" duration="620000" />
+      <workItem from="1705316595920" duration="49000" />
+      <workItem from="1705505810480" duration="7579000" />
+      <workItem from="1705644953417" duration="13578000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -108,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705203054942</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial Folder Structure">
+      <option name="closed" value="true" />
+      <created>1705203810689</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1705203810689</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +152,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Initial Folder Structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Folder Structure" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/vogue_visit_be$vogue_visit_be.coverage" NAME="vogue_visit_be Coverage Results" MODIFIED="1705662087340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
