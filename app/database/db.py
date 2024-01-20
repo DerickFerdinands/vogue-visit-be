@@ -54,9 +54,24 @@ class Salon(Base):
     img_3 = Column(Text)
     img_4 = Column(Text)
     img_5 = Column(Text)
+    services = relationship('Service', back_populates='salon', cascade='all, delete-orphan')
 
 
 
+class Service(Base):
+    __tablename__ = 'services'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
+    description = Column(String(500))
+    price = Column(Integer)
+    img_1 = Column(Text)
+    img_2 = Column(Text)
+    img_3 = Column(Text)
+    img_4 = Column(Text)
+    img_5 = Column(Text)
+    slot_count = Column(Integer, default=1)
+    salon_id = Column(Integer, ForeignKey('salons.id'))
+    salon = relationship('Salon', back_populates='services')
 
 
 # Create new tables
