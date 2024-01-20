@@ -23,15 +23,10 @@ def get_all_services():
 def save_service(serviceDto: ServiceDto, user: UserDto):
     try:
         service = map_dto_to_service(serviceDto)
-        print('1', service)
         salon = db.query(Salon).filter_by(owner_id=user.id).first()
-        print('2', salon)
         service.salon = salon
-        print('3')
         db.add(service)
-        print('4')
         db.commit()
-        print(5)
     except Exception as e:
         print(e)
         db.rollback()

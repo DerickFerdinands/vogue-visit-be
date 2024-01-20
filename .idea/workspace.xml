@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c22077fe-add7-4ebb-840a-316310358ae0" name="Changes" comment="Salons Completed">
-      <change afterPath="$PROJECT_DIR$/app/controllers/service_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/mappers/service_mapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/service/service_service.py" afterDir="false" />
+    <list default="true" id="c22077fe-add7-4ebb-840a-316310358ae0" name="Changes" comment="Service Completed">
+      <change afterPath="$PROJECT_DIR$/app/controllers/time_slot_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/time_slot_dto.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/time_slot_rq.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/service/time_slot_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/service_dto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/service_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/service_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +51,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/ML/Vogue Visit/vogue_visit_be/app/mappers",
+    "last_opened_file_path": "D:/ML/Vogue Visit/vogue_visit_be/app/service",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -66,9 +67,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\ML\Vogue Visit\vogue_visit_be\app\mappers" />
       <recent name="D:\ML\Vogue Visit\vogue_visit_be\app\service" />
       <recent name="D:\ML\Vogue Visit\vogue_visit_be\app\controllers" />
+      <recent name="D:\ML\Vogue Visit\vogue_visit_be\app\mappers" />
       <recent name="D:\ML\Vogue Visit\vogue_visit_be\app\models" />
       <recent name="D:\ML\Vogue Visit\vogue_visit_be\app\entity" />
     </key>
@@ -121,7 +122,7 @@
       <workItem from="1705293866505" duration="620000" />
       <workItem from="1705316595920" duration="49000" />
       <workItem from="1705505810480" duration="7579000" />
-      <workItem from="1705644953417" duration="42207000" />
+      <workItem from="1705644953417" duration="46492000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -163,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705766914967</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Service Completed">
+      <option name="closed" value="true" />
+      <created>1705770921736</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1705770921737</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,9 +184,10 @@
     <MESSAGE value="Add User Routes, Models, Entities, mappers and service layers" />
     <MESSAGE value="contentU" />
     <MESSAGE value="Salons Completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Salons Completed" />
+    <MESSAGE value="Service Completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Service Completed" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/vogue_visit_be$vogue_visit_be.coverage" NAME="vogue_visit_be Coverage Results" MODIFIED="1705770226120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/vogue_visit_be$vogue_visit_be.coverage" NAME="vogue_visit_be Coverage Results" MODIFIED="1705775270374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 # app/database/db.py
 from sqlalchemy import create_engine, ForeignKey
 from sqlalchemy.orm import sessionmaker, relationship
-from sqlalchemy import Column, Integer, String, Sequence, Boolean, Text
+from sqlalchemy import Column, Integer, String, Sequence, Boolean, Text, Date, Time
 from sqlalchemy.ext.declarative import declarative_base
 import bcrypt
 
@@ -55,6 +55,7 @@ class Salon(Base):
     img_4 = Column(Text)
     img_5 = Column(Text)
     services = relationship('Service', back_populates='salon', cascade='all, delete-orphan')
+    slots = relationship('TimeSlot', back_populates='salon', cascade='all, delete-orphan')
 
 
 
@@ -72,6 +73,17 @@ class Service(Base):
     slot_count = Column(Integer, default=1)
     salon_id = Column(Integer, ForeignKey('salons.id'))
     salon = relationship('Salon', back_populates='services')
+
+class TimeSlot(Base):
+        __tablename__ = 'time_slots'
+        id = Column(Integer, primary_key=True)
+        salon_id = Column(Integer, ForeignKey('salons.id'))
+        salon = relationship('Salon', back_populates='slots')
+        date = Column(Date, nullable=False)
+        start_time = Column(Time, nullable=False)
+        end_time = Column(Time, nullable=False)
+        is_booked = Column(Boolean, default=False)
+
 
 
 # Create new tables
