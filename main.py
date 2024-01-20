@@ -5,6 +5,7 @@ from fastapi import FastAPI, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 
 from app.config.jwt import generate_jwt, decode_jwt
+from app.controllers.appointment_controller import appointment_router
 from app.controllers.salon_controller import salon_router
 from app.controllers.service_controller import service_router
 from app.controllers.time_slot_controller import time_slot_router
@@ -24,3 +25,4 @@ app.include_router(user_router)
 app.include_router(salon_router)
 app.include_router(service_router)
 app.include_router(time_slot_router)
+app.include_router(appointment_router)

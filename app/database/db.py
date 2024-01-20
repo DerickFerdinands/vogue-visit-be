@@ -23,6 +23,7 @@ class User(Base):
     is_salon_owner = Column(Boolean, default=False)
     hashed_password = Column(String(60), nullable=False)  # Adjust length as needed
     salon = relationship('Salon', back_populates='salon_owner')
+    appointments = relationship('Appointment', back_populates='user', cascade='all, delete-orphan')
 
     def set_password(self, password):
         # Hash and set the password
@@ -73,6 +74,8 @@ class Service(Base):
     slot_count = Column(Integer, default=1)
     salon_id = Column(Integer, ForeignKey('salons.id'))
     salon = relationship('Salon', back_populates='services')
+    appointments = relationship('Appointment', back_populates='service', cascade='all, delete-orphan')
+
 
 class TimeSlot(Base):
         __tablename__ = 'time_slots'
@@ -83,6 +86,20 @@ class TimeSlot(Base):
         start_time = Column(Time, nullable=False)
         end_time = Column(Time, nullable=False)
         is_booked = Column(Boolean, default=False)
+        appointment = relationship('Appointment', back_populates='time_slot', cascade='all, delete-orphan')
+
+
+class Appointment(Base):
+    __tablename__ = 'appointments'
+    id = Column(Integer, primary_key=True)
+    time_slot_id = Column(Integer, ForeignKey('time_slots.id'))
+    time_slot = relationship('TimeSlot', back_populates='appointment')
+    service_id = Column(Integer, ForeignKey('services.id'))
+    service = relationship('Service', back_populates='appointments')
+    user_id = Column(Integer, ForeignKey('users.id'))
+    user = relationship('User', back_populates='appointments')
+    payment_status = Column(Text, nullable=False, default='PENDING')
+    identifier = Column(String(100), nullable=False)
 
 
 
