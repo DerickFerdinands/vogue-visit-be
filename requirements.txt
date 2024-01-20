@@ -16,3 +16,5 @@ SQLAlchemy
 mysqlclient
 pymysql
 pyjwt
+boto3
+python-multipart

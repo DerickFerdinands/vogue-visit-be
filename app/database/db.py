@@ -1,7 +1,7 @@
 # app/database/db.py
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import Column, Integer, String, Sequence, Boolean
+from sqlalchemy import create_engine, ForeignKey
+from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy import Column, Integer, String, Sequence, Boolean, Text
 from sqlalchemy.ext.declarative import declarative_base
 import bcrypt
 
@@ -22,6 +22,7 @@ class User(Base):
     email = Column(String(255), unique=True, nullable=False)
     is_salon_owner = Column(Boolean, default=False)
     hashed_password = Column(String(60), nullable=False)  # Adjust length as needed
+    salon = relationship('Salon', back_populates='salon_owner')
 
     def set_password(self, password):
         # Hash and set the password
@@ -36,6 +37,23 @@ class User(Base):
     def __repr__(self):
         return f"<User(id={self.id}, email={self.email})>"
 
+class Salon(Base):
+    __tablename__ = 'salons'
+    id = Column(Integer, Sequence('user_id_seq'), primary_key=True)
+    name = Column(String(100))
+    description = Column(String(500))
+    location = Column(Text)
+    owner_id = Column(Integer, ForeignKey('users.id'), unique=True)
+    salon_owner = relationship('User', back_populates='salon')
+    instagram_url = Column(String(255), unique=True)
+    facebook_url = Column(String(255), unique=True)
+    phone_num = Column(String(15), unique=True)
+    email = Column(String(255), unique=True)
+    img_1 = Column(Text)
+    img_2 = Column(Text)
+    img_3 = Column(Text)
+    img_4 = Column(Text)
+    img_5 = Column(Text)
 
 
 

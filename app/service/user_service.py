@@ -5,6 +5,7 @@ from app.config import jwt
 from app.database.db import get_db, User
 from app.mappers.user_mapper import userdto_to_user
 from app.models.login import Login
+from app.models.response_dto import ResponseDto
 from app.models.user_dto import UserDto
 
 # db_session = get_db()
@@ -33,13 +34,13 @@ def save_user(dto: UserDto):
         return {"status": 200, "message": "User created successfully"}
 
 
-def get_user(email:str):
+def get_user(email: str):
     try:
         user = db.query(User).filter_by(email=email).first()
     except Exception as e:
         return {"status": 500, "message": e}
     else:
-        return {"status": 200, "message": "User Fetched successfully", "data":user}
+        return ResponseDto(status=200, message="User Fetched successfully", data=user)
 
 def update_user(dto: UserDto):
     try:
