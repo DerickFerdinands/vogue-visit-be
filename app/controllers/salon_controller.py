@@ -38,9 +38,14 @@ async def fetch_salons():
     return get_all_salons()
 
 
-@salon_router.get("/{email}")
-async def fetch_salon(email: str):
-    return get_salon(email)
+@salon_router.get("/byid/{id}")
+async def fetch_salon(id: str):
+    return get_salon(id)
+
+@salon_router.get("/owner")
+async def fetch_salon_by_id(current_user: UserDto = Depends(get_current_user)):
+    print("hit hi hit")
+    return get_salon_by_id(current_user)
 
 @salon_router.post("/", response_model=None)
 async def create_salon(salon: SalonDto, current_user: UserDto = Depends(get_current_user)):

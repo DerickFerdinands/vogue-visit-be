@@ -3,6 +3,7 @@ from fastapi import FastAPI, Depends, HTTPException, Request
 
 
 from sqlalchemy.orm import Session
+from starlette.middleware.cors import CORSMiddleware
 
 from app.config.jwt import generate_jwt, decode_jwt
 from app.controllers.appointment_controller import appointment_router
@@ -16,6 +17,15 @@ from app.database.db import get_db, User
 
 app = FastAPI()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root(db: Session = Depends(get_db)):

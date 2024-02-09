@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 import bcrypt
 
 
-DATABASE_URL = 'mysql+pymysql://root:1234@localhost/vogue_visit'
+DATABASE_URL = 'mysql+pymysql://admin:1qaz2wsx@database-1.cfsc2s82qjqy.us-east-1.rds.amazonaws.com/vogue_visit'
 
 engine = create_engine(DATABASE_URL, echo=True)
 Base = declarative_base()

@@ -1,4 +1,4 @@
-from fastapi import Depends
+from fastapi import Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.config import jwt
@@ -27,11 +27,15 @@ def save_user(dto: UserDto):
     try:
         db.add(user)
         db.commit()
+        jwt_token = jwt.generate_jwt(
+         db.query(User).filter_by(email=dto.email).first()
+        )
+
     except Exception as e:
         db.rollback()
         return {"status": 500, "message": e}
     else:
-        return {"status": 200, "message": "User created successfully"}
+        return {"status": 200, "message": "User created successfully", "data": {"token": jwt_token, "user":user}}
 
 
 def get_user(email: str):
@@ -78,8 +82,8 @@ def login_user(login: Login):
         if user.check_password(login.password):
             jwt_token = jwt.generate_jwt(user)
         else:
-            return {"status": 500, "message": "Invalid Username Or Password"}
+            raise HTTPException(status_code=400, detail="Invalid Username Or Password")
     except Exception as e:
-        return {"status": 500, "message": e}
+        raise HTTPException(status_code=400, detail="Invalid Username Or Password")
     else:
-        return {"status": 200, "message": "Successfully logged in", "data": {"token": jwt_token}}
+        return {"status": 200, "message": "Successfully logged in", "data": {"token": jwt_token, "user":user}}

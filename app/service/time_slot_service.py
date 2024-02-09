@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
 from fastapi import HTTPException
-
+from datetime import date
 from app.database.db import get_db, Salon, Service, TimeSlot
 from app.mappers.service_mapper import map_dto_to_service
 from app.models.salon_dto import SalonDto
@@ -39,6 +39,64 @@ def get_slots_for_date(date: str, user: UserDto):
         # result.foreach()
         return {"status": 200, "message": "Successfully fetched all Time Slots for the dat", "data": slots}
 
+
+def get_slots_for_date_by_salon_id(salon_id: int, date: str):
+
+    try:
+        validated_date = datetime.strptime(date, '%Y-%m-%d').date()
+        slots = db.query(TimeSlot).filter_by(salon_id=salon_id, date=validated_date).all()
+    except Exception as e:
+        print(e)
+        return {"status": 500, "message": e}
+    else:
+        # result.foreach()
+        return {"status": 200, "message": "Successfully fetched all Time Slots for the dat", "data": slots}
+
+def get_dates_and_slots(user: UserDto):
+    try:
+        # Get today's date
+        today_date = date.today()
+
+        # Format today's date as a string
+        validated_date = today_date.strftime('%Y-%m-%d')
+
+        # Query the salon
+        salon = db.query(Salon).filter_by(owner_id=user.id).first()
+
+        # Filter and get unique dates
+        slots = db.query(TimeSlot.date).filter(
+            (TimeSlot.salon_id == salon.id) & (TimeSlot.date >= validated_date)
+        ).distinct().all()
+
+        # Extract unique dates from the result
+        unique_dates = [result[0] for result in slots]
+    except Exception as e:
+        print(e)
+        return {"status": 500, "message": str(e)}
+    else:
+        return {"status": 200, "message": "Successfully fetched unique dates for Time Slots", "data": unique_dates}
+
+
+def get_dates_by_salon_id(salonId: int):
+    try:
+        # Get today's date
+        today_date = date.today()
+
+        # Format today's date as a string
+        validated_date = today_date.strftime('%Y-%m-%d')
+
+        # Filter and get unique dates
+        slots = db.query(TimeSlot.date).filter(
+            (TimeSlot.salon_id == salonId) & (TimeSlot.date >= validated_date)
+        ).distinct().all()
+
+        # Extract unique dates from the result
+        unique_dates = [result[0] for result in slots]
+    except Exception as e:
+        print(e)
+        return {"status": 500, "message": str(e)}
+    else:
+        return {"status": 200, "message": "Successfully fetched unique dates for Time Slots", "data": unique_dates}
 
 def save_slots(slot_rq: TimeSlotRq, user: UserDto):
     print(slot_rq)

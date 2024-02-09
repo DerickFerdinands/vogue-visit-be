@@ -1,6 +1,5 @@
 from app.database.db import get_db, Salon, Service
 from app.mappers.service_mapper import map_dto_to_service
-from app.models.salon_dto import SalonDto
 from app.models.service_dto import ServiceDto
 from app.models.user_dto import UserDto
 
@@ -45,6 +44,27 @@ def get_service(id: int):
         return {"status": 200, "message": "salon Fetched successfully", "data": service}
 
 
+def get_services_by_owner_id(user: UserDto):
+    try:
+        salon = db.query(Salon).filter_by(owner_id=user.id).first()
+        services = db.query(Service).filter_by(salon_id=salon.id).all()
+    except Exception as e:
+        print(e)
+        return {"status": 500, "message": e}
+    else:
+        return {"status": 200, "message": "salon Fetched successfully", "data": services}
+
+
+def get_services_by_salon_id(salonId: int):
+    try:
+        services = db.query(Service).filter_by(salon_id=salonId).all()
+    except Exception as e:
+        print(e)
+        return {"status": 500, "message": e}
+    else:
+        return {"status": 200, "message": "salon Fetched successfully", "data": services}
+
+
 def update_service(dto: ServiceDto, user: UserDto):
     try:
 
@@ -72,7 +92,7 @@ def update_service(dto: ServiceDto, user: UserDto):
         return {"status": 500, "message": str(e)}
 
 
-def delete_service(dto: ServiceDto,user: UserDto):
+def delete_service(dto: ServiceDto, user: UserDto):
     try:
         salon = db.query(Service).filter_by(id=dto.id).first()
         db.delete(salon)

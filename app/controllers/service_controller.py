@@ -11,7 +11,8 @@ from app.database.db import User
 from app.models.service_dto import ServiceDto
 from app.models.user_dto import UserDto
 from app.service.salon_service import *
-from app.service.service_service import get_all_services, get_service, save_service, update_service, delete_service
+from app.service.service_service import get_all_services, get_service, save_service, update_service, delete_service, \
+    get_services_by_owner_id, get_services_by_salon_id
 from app.utils.aws_s3 import upload_to_s3, generate_s3_url
 
 service_router = APIRouter(prefix="/services")
@@ -21,9 +22,17 @@ async def fetch_services():
     return get_all_services()
 
 
-@service_router.get("/{email}")
-async def fetch_services(email: int):
-    return get_service(email)
+@service_router.get("/id/{id}")
+async def fetch_services(id: int):
+    return get_service(id)
+
+@service_router.get("/owner")
+async def fetch_services_by_owner(current_user: UserDto = Depends(get_current_user)):
+    return get_services_by_owner_id(current_user)
+
+@service_router.get("/salon/{id}")
+async def fetch_services_by_salon(id:int, current_user: UserDto = Depends(get_current_user)):
+    return get_services_by_salon_id(id)
 
 @service_router.post("/", response_model=None)
 async def create_service(service: ServiceDto, current_user: UserDto = Depends(get_current_user)):

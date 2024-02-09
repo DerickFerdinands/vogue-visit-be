@@ -31,12 +31,14 @@ def save_salon(salon: SalonDto, user:UserDto):
         salon.salon_owner = salon_owner
         db.add(salon)
         db.commit()
+
+        retrieved_salon = db.query(Salon).filter_by(owner_id=user.id).first()
     except Exception as e:
         print(e)
         db.rollback()
         return {"status": 500, "message": e}
     else:
-        return {"status": 200, "message": "Salon created successfully"}
+        return {"status": 200, "message": "Salon created successfully", "data": retrieved_salon}
 
 
 def get_salon(id:str):
@@ -47,6 +49,18 @@ def get_salon(id:str):
         return {"status": 500, "message": e}
     else:
         return {"status": 200, "message": "salon Fetched successfully", "data":salon}
+
+
+def get_salon_by_id(user: UserDto):
+    try:
+        print("sjdgvfyuefvhbuyiwejks")
+        print("User Id",user.id)
+        salon = db.query(Salon).filter_by(owner_id=user.id).first()
+    except Exception as e:
+        print(e)
+        return {"status": 500, "message": e}
+    else:
+        return {"status": 200, "message": "salon Fetched sefer successfully", "data":salon}
 
 
 def update_salon( dto: SalonDto, user: UserDto):
